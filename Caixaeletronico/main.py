@@ -75,6 +75,8 @@ while True:
 
             while loginfeito == False: #tentativas de login
                 entradaidusuario = input('\nDigite seu ID de usuário (somente números): ')
+                if entradaidusuario == '0':
+                    break
                 senha = input('\nDigite sua senha: ')
                 try:
                     idusuario = int(entradaidusuario)
