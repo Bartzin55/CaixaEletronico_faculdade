@@ -202,6 +202,14 @@ while True:
                                 print('Operação cancelada...')
                                 time.sleep(4)
                                 break
+                                
+                            elif iddestino == idusuario:
+                                os.system('cls')
+                                funcoesbasicas.line()
+                                print('Você digitou seu próprio ID. Operação cnacelada.')
+                                time.sleep(4)
+                                break
+                                
                             entradavalor = input('Digite o valor que você deseja enviar ao usuário: ')
                             try:
                                 valor = float(entradavalor)
