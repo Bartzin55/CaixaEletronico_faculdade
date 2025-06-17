@@ -3,7 +3,7 @@ import DataBaseContas, VerificadorDeSenha, funcoesbasicas, ExcluirConta, Gerador
 locale.setlocale(locale.LC_ALL, '') # Seta a localização para a padrão do usuário
 
 numero = string.digits
-SENHADISPOSITIVO = '384969177772794' # senha para usar caso ocaixa eletronico seja bloqueado
+SENHADISPOSITIVO = '384969177772794' # senha para usar caso o caixa eletronico seja bloqueado ou o gerente queira desligá-lo
 
 loginfeito = False
 while True:
@@ -28,7 +28,7 @@ while True:
         case '1': #Criação de conta
             funcoesbasicas.line() # uma linha só pra ficar bonitinho
             print('Obrigado por escolher o nosso banco.\n')
-            condicao = False
+            condicao = False #mantem o laço abaixo rodando, ema gluns momentos específicos a condição é atualziada apra ture, fazedo sair do laço
 
             while condicao == False:
                 os.system('cls')
@@ -66,8 +66,8 @@ while True:
                             condicao = True
 
 
-        case '2':
-            tentativa = 5
+        case '2': #entrar em conta criada
+            tentativa = 5 #numero de tentativas queo susuário tem para errar as enha,  ao se esgotar as tentativas, o caixa eletrônico é bloqueado
             os.system('cls')
             funcoesbasicas.line()
             print('Bem vindo de volta.')
@@ -86,9 +86,9 @@ while True:
                     os.system('cls')
                     break
 
-                condicao = DataBaseContas.verificalogin(idusuario, senha)
+                condicao = DataBaseContas.verificalogin(idusuario, senha) #função que, se o login e senha do usuário estiver correto, retorna "True" à vvariável "condicao", mais informações no arquivo DataBaseContas.py
                 
-                if condicao == True:
+                if condicao == True: #Login bem sucedido
                     os.system('cls')
                     funcoesbasicas.line()
                     print('                                                                     Login bem sucedido.')
@@ -99,12 +99,12 @@ while True:
                     loginfeito = True
 
                 else:
-                    tentativa -= 1
-                    if tentativa != 0:
+                    tentativa -= 1 #tentativa do usuário diminui em 1, caso ele  erre o login
+                    if tentativa != 0: # enquanto as tentativas não chegarem a 0, o usuário pode continuar tentando
                         os.system('cls')
                         funcoesbasicas.line()
                         print(f'Usuário ou senha incorretos ou não existentes. Você tem {tentativa} tentativas restantes.')#mostra a quantidade de tentativas restantes até que o programa feche
-                    else:
+                    else: #quando as tentativas chegam a 0, o caixa eltrônico é bloqueado
                         senhadigitada = None
                         while senhadigitada != SENHADISPOSITIVO:
                             os.system('cls')
@@ -127,10 +127,10 @@ while True:
 
             #LOGADO, OPERAÇÕES COM A CONTA REAL
             tempo = funcoesbasicas.time()
-            while loginfeito == True:
+            while loginfeito == True: #loginfeito igual a "True",é mantiido asssim até que o usuário queira sair da conta ou excluí-la
                 os.system('cls')
-                nomeusuario = DataBaseContas.coletarnome(idusuario)
-                saldoatual = DataBaseContas.coletarsaldo(idusuario)
+                nomeusuario = DataBaseContas.coletarnome(idusuario) #coleta o nome do usuário, conforme o id informado no momento do login
+                saldoatual = DataBaseContas.coletarsaldo(idusuario) #coleta o saldo do usuário com o id
 
                 funcoesbasicas.line()
                 print(f'Bem vindo {nomeusuario}! | Login efetuado em {tempo}')
@@ -152,7 +152,7 @@ while True:
                             time.sleep(4)
                             continue
 
-                        if valor <= 0:
+                        if valor <= 0: # se valor for menor que 0, considera inválido
                             print('Valor inválido, tente novamente.')
                             time.sleep(4)
 
