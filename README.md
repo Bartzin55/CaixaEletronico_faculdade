@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é uma simulação de um caixa eletrônico (ATM) desenvolvido em Python para o trabalho da A3. O programa permite a criação de contas de usuário, login com validação de senha, operações de saque, depósito e transferência, além de implementar um sistema de bloqueio por tentativas excessivas de senha incorreta.
+Este projeto é uma simulação de um caixa eletrônico (ATM) desenvolvido em Python para o trabalho da A3 (trabalho de faculdade). O programa permite a criação de contas de usuário, login com validação de senha, operações de saque, depósito e transferência, além de implementar um sistema de bloqueio por tentativas excessivas de senha incorreta.
 
 A aplicação também simula funcionalidades típicas de um caixa eletrônico físico, como a geração de número de cartão, CVV, data de validade e uma senha específica para desbloqueio do terminal (representando o acesso de um gerente).
 
